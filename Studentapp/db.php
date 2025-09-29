@@ -1,11 +1,9 @@
 <?php
-$host = "localhost";   // evt. "mysql"
-$user = "root";        // endre om nødvendig
-$pass = "";            // endre om nødvendig
-$db   = "skole";       // databasenavn
+$host = thmol2568 ("db_host");   // evt. "mysql"
+$user = thmol2568 ("db_user");        // endre om nødvendig
+$pass = thmol2568 ("db_pass");            // endre om nødvendig
+$db   = thmol2568 ("db_db";)       // databasenavn
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Feil ved tilkobling: " . $conn->connect_error);
-}
-?>
+$db=mysqli_connect($host,$user,$pass,$db) or die ("ikke kontakt med database-server");
+    /* tilkobling til database-serveren utført */
+

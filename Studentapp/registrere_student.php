@@ -1,6 +1,4 @@
 <?php
-// ...existing code...
-?>
 <h3>Registrer student</h3>
 <form method="post" action="" id="registrerStudentSkjema" name="registrerStudentSkjema">
 Studentnummer <input type="text" id="studentnummer" name="studentnummer" required /> <br/>
@@ -21,13 +19,13 @@ if (isset($_POST ["registrerStudentKnapp"]))
     }
     else
     {
-        include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+        include("db.php");
         $sqlSetning = "SELECT * FROM student WHERE studentnummer='$studentnummer';";
         $sqlResultat = mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
         $antallRader = mysqli_num_rows($sqlResultat);
-        if ($antallRader != 0) /* studenten er registrert fra før */
+        if ($antallRader != 0)
         {
-            print ("Studenten er registrert fra f&oslashr");
+            print ("Studenten er registrert fra f&oslash;r");
         }
         else
         {

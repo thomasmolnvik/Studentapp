@@ -1,5 +1,5 @@
 <?php
-<?php /* slett-klasse */
+ /* slett-klasse */
 /*
 /* Programmet lager et skjema for å kunne slette en klasse
 /* Programmet sletter den valgte klassen

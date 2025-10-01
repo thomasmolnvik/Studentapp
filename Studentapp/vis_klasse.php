@@ -1,5 +1,5 @@
 <?php
-<?php /* vis-alle-klasser */
+ /* vis-alle-klasser */
 /*
 /* Programmet skriver ut alle registrerte klasser
 */
@@ -18,3 +18,4 @@ $klasse=$rad["klasse"];
 $klassenavn=$rad["klassenavn"];
 print ("<tr> <td> $klasse </td> <td> $klassenavn </td> </tr>");
 }
+?>

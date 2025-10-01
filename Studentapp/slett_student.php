@@ -1,5 +1,5 @@
 <?php
-<?php /* slett-student */
+ /* slett-student */
 /*
 /* Programmet lager et skjema for å kunne slette en student
 /* Programmet sletter den valgte studenten

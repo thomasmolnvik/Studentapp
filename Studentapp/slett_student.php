@@ -32,3 +32,4 @@ mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i database
 /* SQL-setning sendt til database-serveren */
 print ("F&oslash;lgende student er n&aring; slettet: $student <br />");
 }
+?>

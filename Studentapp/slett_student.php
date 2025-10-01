@@ -21,6 +21,8 @@ if (isset($_POST ["slettStudentKnapp"]))
 include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
 $student=$_POST ["student"];
 if (!$student)
+}
+
 {
 print ("Det er ikke valgt noen student");
 }

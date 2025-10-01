@@ -20,7 +20,7 @@ print ("Alle felt m&aring; fylles ut");
 }
 else
 {
-include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
 $sqlSetning="SELECT * FROM klasse WHERE klasse='$klasse';";
 $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
 $antallRader=mysqli_num_rows($sqlResultat);

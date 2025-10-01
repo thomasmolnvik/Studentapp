@@ -3,7 +3,7 @@
 /*
 /* Programmet skriver ut alle registrerte studenter
 */
-include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
 $sqlSetning="SELECT * FROM student ORDER BY studentnummer;";
 $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen"); /*
 SQL-setning sendt til database-serveren */

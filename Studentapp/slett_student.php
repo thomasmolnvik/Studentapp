@@ -1,26 +1,34 @@
 <?php
-include "db.php";
-$res = $conn->query("SELECT brukernavn FROM student");
+<?php /* slett-student */
+/*
+/* Programmet lager et skjema for å kunne slette en student
+/* Programmet sletter den valgte studenten
+*/
 ?>
-
-<form method="post">
-  Velg student: 
-  <select name="brukernavn">
-    <?php while($row = $res->fetch_assoc()){ ?>
-      <option value="<?php echo $row['brukernavn']; ?>"><?php echo $row['brukernavn']; ?></option>
-    <?php } ?>
-  </select>
-  <input type="submit" value="Slett">
+<script src="funksjoner.js"> </script>
+<h3>Slett student</h3>
+<form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema" onSubmit="return
+bekreft()">
+Student <select name="student" id="student">
+<?php print("<option value=''>velg student </option>");
+include("dynamiske-funksjoner.php"); listeboksStudentnummer(); ?>
+</select> <br/>
+<input type="submit" value="Slett student" name="slettStudentKnapp" id="slettStudentKnapp" />
 </form>
-
 <?php
-if($_POST){
-  $bn = $_POST['brukernavn'];
-  $stmt = $conn->prepare("DELETE FROM student WHERE brukernavn = ?");
-  $stmt->bind_param("s", $bn);
-  $stmt->execute();
-  $stmt->close();
-  echo "Student slettet!";
+if (isset($_POST ["slettStudentKnapp"]))
+{
+include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+$student=$_POST ["student"];
+if (!$student)
+{
+print ("Det er ikke valgt noen student");
 }
-echo "<br><a href='index.php'>Tilbake</a>";
-?>
+else
+{
+include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+$sqlSetning="DELETE FROM student WHERE studentnummer='$student';";
+mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
+/* SQL-setning sendt til database-serveren */
+print ("F&oslash;lgende student er n&aring; slettet: $student <br />");
+}

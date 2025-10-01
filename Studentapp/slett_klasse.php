@@ -1,26 +1,32 @@
 <?php
-include "db.php";
-$res = $conn->query("SELECT klassekode FROM klasse");
+<?php /* slett-klasse */
+/*
+/* Programmet lager et skjema for å kunne slette en klasse
+/* Programmet sletter den valgte klassen
+*/
 ?>
-
-<form method="post">
-  Velg klasse: 
-  <select name="kode">
-    <?php while($row = $res->fetch_assoc()){ ?>
-      <option value="<?php echo $row['klassekode']; ?>"><?php echo $row['klassekode']; ?></option>
-    <?php } ?>
-  </select>
-  <input type="submit" value="Slett">
+<script src="funksjoner.js"> </script>
+<h3>Slett klasse</h3>
+<form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema" onSubmit="return bekreft()">
+Klasse
+<select name="klasse" id="klasse">
+<?php print("<option value=''>velg klasse </option>");
+include("dynamiske-funksjoner.php"); listeboksKlassekode(); ?>
+</select> <br/>
+<input type="submit" value="Slett klasse" name="slettKlasseKnapp" id="slettKlasseKnapp" />
 </form>
-
 <?php
-if($_POST){
-  $kode = $_POST['kode'];
-  $stmt = $conn->prepare("DELETE FROM klasse WHERE klassekode = ?");
-  $stmt->bind_param("s", $kode);
-  $stmt->execute();
-  $stmt->close();
-  echo "Klasse slettet!";
+if (isset($_POST ["slettKlasseKnapp"]))
+{
+$klasse=$_POST ["klasse"];
+if (!$klasse)
+{
+print ("Det er ikke valgt noen klasse");
 }
-echo "<br><a href='index.php'>Tilbake</a>";
-?>
+else
+{
+include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+$sqlSetning="DELETE FROM klasse WHERE klassekode='$klasse';";
+mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
+/* SQL-setning sendt til database-serveren */
+print ("F&oslash;lgende klasse er n&aring; slettet: $klasse <br />");

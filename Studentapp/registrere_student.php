@@ -1,4 +1,4 @@
-<?php
+
 <h3>Registrer student</h3>
 <form method="post" action="" id="registrerStudentSkjema" name="registrerStudentSkjema">
 Studentnummer <input type="text" id="studentnummer" name="studentnummer" required /> <br/>

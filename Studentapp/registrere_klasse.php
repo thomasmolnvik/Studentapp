@@ -1,4 +1,4 @@
-<?php
+
 <h3>Registrer klasse </h3>
 <form method="post" action="" id="registrerKlasseSkjema" name="registrerKlasseSkjema">
 Klassekode <input type="text" id="klassekode" name="klassekode" required /> <br/>

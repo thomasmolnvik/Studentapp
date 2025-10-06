@@ -21,7 +21,7 @@ if (isset($_POST ["registrerStudentKnapp"]))
     {
         include("db.php");
         $sqlSetning = "SELECT * FROM student WHERE studentnummer='$studentnummer';";
-        $sqlResultat = mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
+        $sqlResultat = mysqli_query($datanase, $sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
         $antallRader = mysqli_num_rows($sqlResultat);
         if ($antallRader != 0)
         {

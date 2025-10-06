@@ -27,7 +27,7 @@ else
 {
 include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
 $sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode';";
-mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
+mysqli_query($database,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
 /* SQL-setning sendt til database-serveren */
 print ("F&oslash;lgende klasse er n&aring; slettet: $klasse <br />");
 ?>

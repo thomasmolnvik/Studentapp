@@ -21,7 +21,7 @@ print ("Alle felt m&aring; fylles ut");
 else
 {
 include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
-$sqlSetning="SELECT * FROM klasse WHERE klasse='$klassekode';";
+$sqlSetning="SELECT * FROM klasse WHERE klasse='$klasse';";
 $sqlResultat=mysqli_query($database,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
 $antallRader=mysqli_num_rows($sqlResultat);
 if ($antallRader!=0) /* klassen er registrert fra før */

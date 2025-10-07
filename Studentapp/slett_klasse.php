@@ -1,5 +1,5 @@
 <?php
- /* slett-klasse */
+/* slett-klasse */
 /*
 /* Programmet lager et skjema for å kunne slette en klasse
 /* Programmet sletter den valgte klassen
@@ -18,16 +18,17 @@ include("dynamiske-funksjoner.php"); listeboksKlassekode(); ?>
 <?php
 if (isset($_POST ["slettKlasseKnapp"]))
 {
-$klasse=$_POST ["klasse"];
-if (!$klasse)
-{
-print ("Det er ikke valgt noen klasse");
+    $klasse = $_POST ["klasse"];
+    if (!$klasse)
+    {
+        print ("Det er ikke valgt noen klasse");
+    }
+    else
+    {
+        include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+        $sqlSetning = "DELETE FROM klasse WHERE klassekode='$klasse';";
+        mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
+        print ("F&oslash;lgende klasse er n&aring; slettet: $klasse <br />");
+    }
 }
-else
-{
-include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
-$sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode';";
-mysqli_query($database,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-/* SQL-setning sendt til database-serveren */
-print ("F&oslash;lgende klasse er n&aring; slettet: $klasse <br />");
 ?>

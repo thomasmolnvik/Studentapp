@@ -9,3 +9,14 @@ function listeboksKlassekode() {
     }
 }
 ?>
+<?php
+function listeboksStudentnummer() {
+    include("db.php");
+    $sqlSetning = "SELECT brukernavn FROM student ORDER BY brukernavn;";
+    $sqlResultat = mysqli_query($db, $sqlSetning);
+    while ($rad = mysqli_fetch_array($sqlResultat)) {
+        $brukernavn = $rad["brukernavn"];
+        print("<option value='$brukernavn'>$brukernavn</option>");
+    }
+}
+?>

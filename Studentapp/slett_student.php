@@ -20,16 +20,10 @@ if (isset($_POST ["slettStudentKnapp"]))
     }
     else
     {
-      ?>
-        <?php
-function listeboksStudentnummer() {
-    include("db.php");
-    $sqlSetning = "SELECT brukernavn FROM student ORDER BY brukernavn;";
-    $sqlResultat = mysqli_query($db, $sqlSetning);
-    while ($rad = mysqli_fetch_array($sqlResultat)) {
-        $brukernavn = $rad["brukernavn"];
-        print("<option value='$brukernavn'>$brukernavn</option>");
+        include("db.php");
+        $sqlSetning = "DELETE FROM student WHERE brukernavn='$student';";
+        mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
+        print ("F&oslash;lgende student er n&aring; slettet: $student <br />");
     }
 }
 ?>
-    

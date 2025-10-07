@@ -1,9 +1,5 @@
 <?php
 /* slett-student */
-/*
-/* Programmet lager et skjema for å kunne slette en student
-/* Programmet sletter den valgte studenten
-*/
 ?>
 <script src="funksjoner.js"> </script>
 <h3>Slett student</h3>
@@ -24,11 +20,16 @@ if (isset($_POST ["slettStudentKnapp"]))
     }
     else
     {
-        include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
-        $sqlSetning = "DELETE FROM student WHERE studentnummer='$student';";
-        mysqli_query($database, $sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-        /* SQL-setning sendt til database-serveren */
-        print ("F&oslash;lgende student er n&aring; slettet: $student <br />");
+      ?>
+        <?php
+function listeboksStudentnummer() {
+    include("db.php");
+    $sqlSetning = "SELECT brukernavn FROM student ORDER BY brukernavn;";
+    $sqlResultat = mysqli_query($db, $sqlSetning);
+    while ($rad = mysqli_fetch_array($sqlResultat)) {
+        $brukernavn = $rad["brukernavn"];
+        print("<option value='$brukernavn'>$brukernavn</option>");
     }
 }
 ?>
+    

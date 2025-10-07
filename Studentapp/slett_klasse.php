@@ -25,10 +25,20 @@ if (isset($_POST ["slettKlasseKnapp"]))
     }
     else
     {
-        include("db.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
+        include("db.php");
         $sqlSetning = "DELETE FROM klasse WHERE klassekode='$klasse';";
-        mysqli_query($db, $sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-        print ("F&oslash;lgende klasse er n&aring; slettet: $klasse <br />");
+        mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette data i databasen");
+        print ("Følgende klasse er nå slettet: $klasse");
+// eksempel på dynamiske-funksjoner.php
+function listeboksKlassekode() {
+    include("db.php");
+    $sqlSetning = "SELECT klassekode FROM klasse ORDER BY klassekode;";
+    $sqlResultat = mysqli_query($db, $sqlSetning);
+    while ($rad = mysqli_fetch_array($sqlResultat)) {
+        $klassekode = $rad["klassekode"];
+        print("<option value='$klassekode'>$klassekode</option>");
+    }
+}
     }
 }
 ?>

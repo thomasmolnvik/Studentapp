@@ -21,12 +21,21 @@ if (isset($_POST ["slettKlasseKnapp"]))
     }
     else
     {
-       include("db.php");
-$sqlSlettStudenter = "DELETE FROM student WHERE klassekode='$klasse';";
-mysqli_query($db, $sqlSlettStudenter) or die ("Ikke mulig å slette studenter med denne klassekoden");
-$sqlSetning = "DELETE FROM klasse WHERE klassekode='$klasse';";
-mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette klasse");
-print ("Følgende klasse og tilhørende studenter er nå slettet: $klasse");
+        include("db.php");
+        // Sjekk om det finnes studenter med denne klassekoden
+        $sqlSjekk = "SELECT * FROM student WHERE klassekode='$klasse';";
+        $resultatSjekk = mysqli_query($db, $sqlSjekk);
+        $antallStudenter = mysqli_num_rows($resultatSjekk);
+        if ($antallStudenter > 0)
+        {
+            print ("Kan ikke slette klassen fordi det finnes studenter i denne klassen.");
+        }
+        else
+        {
+            $sqlSetning = "DELETE FROM klasse WHERE klassekode='$klasse';";
+            mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette klasse");
+            print ("Følgende klasse er nå slettet: $klasse");
+        }
     }
 }
 ?>
